@@ -42,8 +42,8 @@ nextElementSibling, etc.):
                         ==> errorDisplay.style.display = "block";
 - Modify at least one attribute of an element in response to user interaction ==>/////
 - Include at least one form and/or input with HTML attribute validation : 
-                        ==><form id="reportForm"></form>
-                        ==><input type="date" id="reportDate" name="reportDate" class="form-control" />
+                        ==>(<form id="reportForm"></form>)
+                        ==>(<input type="date" id="reportDate" name="reportDate" class="form-control" />)
 - Include at least one form and/or input with DOM event-based validation. (This can be the same form or input as the one above, but  
   should include event-based validation in addition to the HTML attribute validation.):
                         ==>reportForm.addEventListener("input", function (e) {....})
