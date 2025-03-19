@@ -1,5 +1,6 @@
 // Capture Form Data 
 const reportForm = document.getElementById("reportForm");
+console.log(reportForm);
 
 //make sure the programe is working 
 if (!reportForm) {
@@ -22,6 +23,14 @@ function hideError() {
     // Clear all error messages
     errorDisplay.innerHTML = "";
     errorDisplay.style.display = "none";
+}
+
+// Get Lable name for each inpute 
+function getLabelName(fieldName) {
+
+       const label = document.querySelector(`label[for="${fieldName}"]`);
+
+    return label ? label.textContent.trim() : fieldName;
 }
 
 
@@ -75,7 +84,7 @@ reportForm.addEventListener("input", function (e) {
     // Validate Permit Number
     if (field.name === "permitNum") {
         if (!/^\d{9}-\d{2}-[A-Z]{2}\/[A-Z0-9]+-[A-Z]\d$/.test(field.value)) {
-            showError("Permit Number must follow the format '321588082-01-NB/B00339711-I1'.", field);
+            showError("Permit Number must follow the format '123456789-01-NB/A12345678-I1'.", field);
             return;
         }
     }
@@ -115,7 +124,7 @@ reportForm.addEventListener('submit', function (event) {
     for (let fieldName of requiredFields) {
         const field = document.querySelector(`[name="${fieldName}"]`);
         if (!field || field.value.trim() === "") {
-            alert(`Please fill in the ${fieldName.replace(/([A-Z])/g, ' $1').toLowerCase()}.`);
+            alert(`Please fill in the ${getLabelName(fieldName)}.`);
             return;
         }
     }
