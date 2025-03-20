@@ -1,7 +1,7 @@
 # project dicription :
 - Inspection report application that uses HTML, CSS, and JavaScript to create, validate, and manage form inputs for an inspection  process. It ensures a user-friendly experience by providing dynamic validation, real-time error feedback, and a polished UI design.
 
-# Pages used :
+# Pages and functions used :
 - HTML Structure (report.html) : I organized the inspection report form using form, table, label, inputs, Bootstrap classes 
                                - Report Information: Includes fields for the report number, date, and inspector details.
                                - Project Information: Collects project-specific details like the permit number, project name, and    
@@ -22,6 +22,13 @@
                                - The inspectionData is parsed using JSON.parse() to convert the JSON string into a usable object.
                                - Each section (reportResult1 to reportResult7) is populated with relevant data from the parsed object.
                                - DOMContentLoaded This event ensures the script runs only after the page's DOM has fully loaded
+NB : i used sepaate page for DOMContentLoaded evenet to avoid some problems 
+
+# Function and wants to add in the future :
+ - Upload/take a picture and add it in the next pages of the report
+ - detect the location automatilcy using GPS and post it in the report
+ - add print and downoad option so the engineer can have a physical copy of the report 
+ - Note section for all added notes
 
 
 # Requirement : with exemple from the code 
@@ -40,12 +47,13 @@ nextElementSibling, etc.):
 - Use appendChild and/or prepend to add new elements to the DOM:
                         ==> errorDisplay.appendChild(errorItem);
 - Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content
-                        ==>//////
+                        ==>i tried to modify my code to use cloneNode method but it didnt work sorry 
 - Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent:   
                         ==> errorItem.textContent = message;
 - Modify the style and/or CSS classes of an element in response to user interactions using the style or classList properties: 
                         ==> errorDisplay.style.display = "block";
-- Modify at least one attribute of an element in response to user interaction ==>/////
+- Modify at least one attribute of an element in response to user interaction:
+                        ==>field.setAttribute("aria-invalid", "true") and field.setAttribute("aria-invalid", "false");
 - Include at least one form and/or input with HTML attribute validation : 
                         ==>(form id="reportForm")
                         ==>(input type="date" id="reportDate" name="reportDate" class="form-control" )

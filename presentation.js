@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p><strong>Revision Number :</strong> ${data.revisionNumber}</p>
             <p><strong>Buillding Department :</strong> ${data.Bdepartement}</p>
             <p><strong>Plan or Revision Approval Date :</strong> ${data.Bdepartement}</p> `; 
+        
         data.planSheetResults.forEach(item => {
                 reportResult4.innerHTML += `
                     <tr>

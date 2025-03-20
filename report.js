@@ -71,12 +71,23 @@ reportForm.addEventListener("input", function (e) {
         }
     }
 
+    // i made a change on my code to reflect to the requirement 
+    //Modify at least one attribute of an element in response to user interaction.
     if (field.name === "inspectorID") {
         if (!/^[A-Z0-9]+$/.test(field.value)) {
+            field.setAttribute("aria-invalid", "true"); // Modifies the 'aria-invalid' attribute to indicate invalid input
             showError("Inspector ID should contain only uppercase letters and numbers.");
             return;
+        } else {
+            field.setAttribute("aria-invalid", "false"); // Ensures the attribute reflect valid input
         }
     }
+    // if (field.name === "inspectorID") {
+    //     if (!/^[A-Z0-9]+$/.test(field.value)) {
+    //         showError("Inspector ID should contain only uppercase letters and numbers.");
+    //         return;
+    //     }
+    // }
 
    
 
