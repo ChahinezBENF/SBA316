@@ -7,16 +7,21 @@
                                - Project Information: Collects project-specific details like the permit number, project name, and    
                                  address.
                                - Plan Information: Gathers details such as the planner's name, building department, and revision numbers.
+                               - Plan sheet type for special inspection
                                - Plan Sheet Results: A table to record observations with dropdowns for results.
-- HTML Structure (Presentation.html)  /////////  
-- CSS Styling (report.css): custom styling with some Bootstrap 
-                               - Rows (e.g., #Row1 to #Row4) are styled with display: flex for alignment.
+                               - custom styling with some Bootstrap 
+- HTML Structure (Presentation.html) : Show the result of the the inspection report form for better and clean view 
 - JavaScript Functionality (report.js): dynamically validates form inputs and manages the form's behavior 
                                - Real-Time Validation with input Event
                                - Submission Validation with submit Event
                                - check inputes validities using (regex) and other conditions 
                                - Error Handling with showError and hideError functions
                                - Saves form data  localStorage 
+- JavaScript Functionality (presentation.js) : Retrieve DATA from localStorage by parsing the stored JSON data and then updates various  
+                                              elements in the DOM (Document Object Model) based on the retrieved content.
+                               - The inspectionData is parsed using JSON.parse() to convert the JSON string into a usable object.
+                               - Each section (reportResult1 to reportResult7) is populated with relevant data from the parsed object.
+                               - DOMContentLoaded This event ensures the script runs only after the page's DOM has fully loaded
 
 
 # Requirement : with exemple from the code 
@@ -42,12 +47,13 @@ nextElementSibling, etc.):
                         ==> errorDisplay.style.display = "block";
 - Modify at least one attribute of an element in response to user interaction ==>/////
 - Include at least one form and/or input with HTML attribute validation : 
-                        ==>(<form id="reportForm"></form>)
-                        ==>(<input type="date" id="reportDate" name="reportDate" class="form-control" />)
+                        ==>(form id="reportForm")
+                        ==>(input type="date" id="reportDate" name="reportDate" class="form-control" )
 - Include at least one form and/or input with DOM event-based validation. (This can be the same form or input as the one above, but  
   should include event-based validation in addition to the HTML attribute validation.):
                         ==>reportForm.addEventListener("input", function (e) {....})
                         ==>reportForm.addEventListener('submit', function (event) {....})
+                        ==>document.addEventListener('DOMContentLoaded', () => {....})
 - Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive 
   partial credit):      ==> if (!reportForm) {console.error("reportForm element not found!");}
 - Commit frequently to the git repository:

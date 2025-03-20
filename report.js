@@ -118,7 +118,7 @@ reportForm.addEventListener('submit', function (event) {
         "reportNum", "reportDate", "inspectorName", "inspectorLastName",
         "inspectorID", "directorName", "directorLastName", "projectName",
         "permitNum", "address", "contractorName", "planerName", "revisionNumber",
-        "Bdepartement", "planDate"
+        "Bdepartement", "planDate", "plan"
     ];
 
     for (let fieldName of requiredFields) {
@@ -154,7 +154,8 @@ reportForm.addEventListener('submit', function (event) {
         planerName: document.querySelector('[name="planerName"]').value,
         revisionNumber: document.querySelector('[name="revisionNumber"]').value,
         Bdepartement: document.querySelector('[name="Bdepartement"]').value,
-        planDate: document.querySelector('[name="planDate"]').value
+        planDate: document.querySelector('[name="planDate"]').value,
+        plan : document.querySelector('[name="plan"]').value,
     };
 
     // Capture Plan Sheet Results
