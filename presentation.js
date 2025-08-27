@@ -53,4 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
         reportResult6.innerHTML = '<p>No inspection data available.</p>';
     }
 
+     //  Print Button functionality
+    const printBtn = document.getElementById('printBtn');
+    printBtn.addEventListener('click', () => {
+        window.print();
+    });
+
 });
