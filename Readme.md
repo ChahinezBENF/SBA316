@@ -25,10 +25,10 @@
 NB : i used sepaate page for DOMContentLoaded evenet to avoid some problems 
 
 # Function and wants to add in the future :
- - Upload/take a picture and add it in the next pages of the report
+ - Upload/take a picture and add it in the next pages of the report 
  - detect the location automatilcy using GPS and post it in the report
- - add print and downoad option so the engineer can have a physical copy of the report 
- - Note section for all added notes
+ - add sections bellow (with title and picture with a note under each picture)
+ - make it fit for phone and tablette ( CSS @media)
 
 
 # Requirement : with exemple from the code 
