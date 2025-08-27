@@ -1,3 +1,92 @@
+/////////////////////////
+
+
+// Get dropdown and table body
+const planSelect = document.querySelector('select[name="plan"]');
+const tableBody = document.querySelector('#Row4 tbody');
+
+// Map Inspection Subject to corresponding observations
+const observationsMap = {
+  "Structural Steel – Welding BC 1704.3.1": [
+    "MATERIAL IDENTIFICATION: VERIFY TYPE & GRADE",
+    "PROPER FASTENERS FOR JOINTS, COMPONENT & ASSEMBLIES",
+    "PROPER FASTENING PROCEDURES",
+    "ADEQUATE PLANS AVAILABLE",
+    "CONNECTING ELEMENTS",
+    "PRE-INSTALLATION VERIFICATION TESTING",
+    "PROPER STORAGE",
+    "SNUG-TIGHT PRIOR TO FASTENING",
+    "STEEL RUNNERS (TRACKS), BLOCKING, LINTELS, CLIP ANGLES, SHOES, REINFORCEMENTS, FASTENERS, AND ACCESSORIES",
+    "CONTINUOUS TRACKS SIZED TO MATCH STUDS",
+    "ANCHOR ENDS OR STIFFENERS TO SUPPORTING STRUCTURE",
+    "STUDS SECURED TO TOP AND BOTTOM RUNNER TRACKS BY EITHER WELDING OR SCREW FASTENERS AT BOTH INSIDE AND OUTSIDE FLANGES",
+    "A STUD SHALL BE LOCATED UNDERNEATH EACH TRUSS BEARING POINT",
+    "STRUCTURAL STEEL SHOP DRAWINGS",
+    "STUDS ARE BRACED WITH TWO ROWS OF BRIDGING, SPACED BETWEEN FLOORS (4'-0\" MAX. SPACING)",
+    "JOIST BRIDGING INSTALLED / 12 GAGE SOLID BRIDGING."
+  ],
+  "Structural Steel – Details BC 1704.3.2": [
+    "DETAILS OBSERVATION 1",
+    "DETAILS OBSERVATION 2",
+    "DETAILS OBSERVATION 3"
+  ],
+  "Structural Steel – High Strength Bolting BC 1704.3.3": [
+    "BOLTING OBSERVATION 1",
+    "BOLTING OBSERVATION 2"
+  ],
+  "Structural Cold - Formed Steel BC 1704.3.4": [
+    "COLD FORMED OBSERVATION 1",
+    "COLD FORMED OBSERVATION 2"
+  ],
+   "Structural Cold-Formed Steel BC 1704.3.6": [
+    "COLD FORMED OBSERVATION 4",
+    "COLD FORMED OBSERVATION 7"
+  ]
+
+};
+
+// Update table dynamically on dropdown change
+planSelect.addEventListener('change', function () {
+  const selectedSubject = planSelect.value;
+
+  // Clear previous rows
+  tableBody.innerHTML = '';
+
+  if (!selectedSubject || !observationsMap[selectedSubject]) return;
+
+  // Create rows dynamically
+  observationsMap[selectedSubject].forEach((obs, index) => {
+    const row = document.createElement('tr');
+
+    // Observation cell
+    const obsCell = document.createElement('td');
+    obsCell.textContent = obs;
+    row.appendChild(obsCell);
+
+    // Result cell with select
+    const resultCell = document.createElement('td');
+    const select = document.createElement('select');
+    select.name = `result${index + 1}`;
+    select.classList.add('planResult');
+
+    ["", "N/A", "PASS", "Fail"].forEach(opt => {
+      const option = document.createElement('option');
+      option.value = opt;
+      option.textContent = opt;
+      select.appendChild(option);
+    });
+
+    resultCell.appendChild(select);
+    row.appendChild(resultCell);
+
+    tableBody.appendChild(row);
+  });
+});
+
+
+
+//////////////////////////////
+
 // Capture Form Data 
 const reportForm = document.getElementById("reportForm");
 console.log(reportForm);
