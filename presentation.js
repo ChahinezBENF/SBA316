@@ -42,7 +42,25 @@ document.addEventListener('DOMContentLoaded', () => {
         reportResult7.innerHTML = `
              <p><strong> Special Inspection Report for: </strong> ${data.plan}</p>`;        
 
-          
+         //  Render Notes & Pictures here
+        const notesContainer = document.getElementById('notesPicturesContainer');
+        if (data.notes && data.notes.length > 0) {
+            data.notes.forEach(note => {
+                const noteDiv = document.createElement("div");
+                noteDiv.classList.add("mb-3", "p-2", "border", "rounded");
+
+                let content = `<p><strong>Note:</strong> ${note.text || "—"}</p>`;
+                if (note.image) {
+                    content += `<img src="${note.image}" alt="Note Image" style="max-width:200px; display:block; margin-top:5px;">`;
+                }
+
+                noteDiv.innerHTML = content;
+                notesContainer.appendChild(noteDiv);
+            });
+        } else {
+            notesContainer.innerHTML = "<p>No notes or pictures provided.</p>";
+        }
+ 
         
     } else {
         reportResult1.innerHTML = '<p>No inspection data available.</p>';
@@ -53,6 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
         reportResult6.innerHTML = '<p>No inspection data available.</p>';
     }
 
+
+
      //  Print Button functionality
     const printBtn = document.getElementById('printBtn');
     printBtn.addEventListener('click', () => {
@@ -60,3 +80,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+

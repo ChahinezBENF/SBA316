@@ -211,6 +211,27 @@ reportForm.addEventListener("input", function (e) {
 });
 
 
+//////////////////////////
+
+// Notes Section
+const notesContainer = document.getElementById("notesContainer");
+const addNoteBtn = document.getElementById("addNoteBtn");
+
+let noteIndex = 0;
+addNoteBtn.addEventListener("click", () => {
+    noteIndex++;
+    const noteBlock = document.createElement("div");
+    noteBlock.classList.add("mb-3", "border", "p-2", "rounded");
+    noteBlock.innerHTML = `
+        <label>Note ${noteIndex}</label>
+        <textarea name="note${noteIndex}" class="form-control mb-2" rows="2" placeholder="Write your note..."></textarea>
+        <input type="file" name="noteImage${noteIndex}" class="form-control" accept="image/*" />
+    `;
+    notesContainer.appendChild(noteBlock);
+});
+
+///////////////////////////
+
 reportForm.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -269,6 +290,42 @@ reportForm.addEventListener('submit', function (event) {
     });
 
     formData.planSheetResults = planSheetResults;
+
+    /////////////////
+   // Collect notes & pictures
+const notes = [];
+const noteBlocks = document.querySelectorAll("#notesContainer > div");
+
+function processNotes(index = 0) {
+    if (index >= noteBlocks.length) {
+        formData.notes = notes;
+
+        // Save data and redirect
+        localStorage.setItem('inspectionReport', JSON.stringify(formData));
+        window.location.href = 'presentation.html';
+        return;
+    }
+
+    const block = noteBlocks[index];
+    const text = block.querySelector("textarea").value.trim();
+    const fileInput = block.querySelector("input[type='file']");
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            notes.push({ text, image: e.target.result }); // Base64 image
+            processNotes(index + 1);
+        };
+        reader.readAsDataURL(file);
+    } else {
+        notes.push({ text, image: "" });
+        processNotes(index + 1);
+    }
+}
+
+processNotes();
+    /////////////
 
     // Store the data in localStorage
     localStorage.setItem('inspectionReport', JSON.stringify(formData));
