@@ -223,10 +223,10 @@ addNoteBtn.addEventListener("click", () => {
     const noteBlock = document.createElement("div");
     noteBlock.classList.add("mb-3", "border", "p-2", "rounded");
     noteBlock.innerHTML = `
-        <label>Note ${noteIndex}</label>
-        <textarea name="note${noteIndex}" class="form-control mb-2" rows="2" placeholder="Write your note..."></textarea>
-        <input type="file" name="noteImage${noteIndex}" class="form-control" accept="image/*" />
-    `;
+        <label class="fw-bold">Note ${noteIndex}</label>
+        <input type="text" name="noteTitle${noteIndex}" class="form-control mb-2" placeholder="Enter a title for this note" />
+        <input type="file" name="noteImage${noteIndex}" class="form-control mb-2" accept="image/*" />
+        <textarea name="note${noteIndex}" class="form-control mb-2" rows="2" placeholder="Write your note..."></textarea>`;
     notesContainer.appendChild(noteBlock);
 });
 
@@ -292,7 +292,7 @@ reportForm.addEventListener('submit', function (event) {
     formData.planSheetResults = planSheetResults;
 
     /////////////////
-   // Collect notes & pictures
+// Collect notes & pictures
 const notes = [];
 const noteBlocks = document.querySelectorAll("#notesContainer > div");
 
@@ -300,13 +300,14 @@ function processNotes(index = 0) {
     if (index >= noteBlocks.length) {
         formData.notes = notes;
 
-        // Save data and redirect
+        // Save and redirect
         localStorage.setItem('inspectionReport', JSON.stringify(formData));
         window.location.href = 'presentation.html';
         return;
     }
 
     const block = noteBlocks[index];
+    const title = block.querySelector(`input[name^="noteTitle"]`).value.trim();
     const text = block.querySelector("textarea").value.trim();
     const fileInput = block.querySelector("input[type='file']");
     const file = fileInput.files[0];
@@ -314,12 +315,12 @@ function processNotes(index = 0) {
     if (file) {
         const reader = new FileReader();
         reader.onload = function (e) {
-            notes.push({ text, image: e.target.result }); // Base64 image
+            notes.push({ title, text, image: e.target.result }); // Save title + text + Base64 image
             processNotes(index + 1);
         };
         reader.readAsDataURL(file);
     } else {
-        notes.push({ text, image: "" });
+        notes.push({ title, text, image: "" });
         processNotes(index + 1);
     }
 }

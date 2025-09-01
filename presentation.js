@@ -42,24 +42,34 @@ document.addEventListener('DOMContentLoaded', () => {
         reportResult7.innerHTML = `
              <p><strong> Special Inspection Report for: </strong> ${data.plan}</p>`;        
 
-         //  Render Notes & Pictures here
-        const notesContainer = document.getElementById('notesPicturesContainer');
-        if (data.notes && data.notes.length > 0) {
-            data.notes.forEach(note => {
-                const noteDiv = document.createElement("div");
-                noteDiv.classList.add("mb-3", "p-2", "border", "rounded");
+        //  Render Notes & Pictures here
+const notesContainer = document.getElementById('notesPicturesContainer');
+if (data.notes && data.notes.length > 0) {
+    data.notes.forEach(note => {
+        const noteDiv = document.createElement("div");
+        noteDiv.classList.add("mb-3", "p-2", "border", "rounded");
 
-                let content = `<p><strong>Note:</strong> ${note.text || "—"}</p>`;
-                if (note.image) {
-                    content += `<img src="${note.image}" alt="Note Image" style="max-width:200px; display:block; margin-top:5px;">`;
-                }
+        // Build content with Title, Image, and Note under image
+        let content = "";
 
-                noteDiv.innerHTML = content;
-                notesContainer.appendChild(noteDiv);
-            });
-        } else {
-            notesContainer.innerHTML = "<p>No notes or pictures provided.</p>";
+        if (note.title) {
+            content += `<h5 style="margin-bottom:5px;">${note.title}</h5>`;
         }
+
+        if (note.image) {
+            content += `<img src="${note.image}" alt="Note Image" style="max-width:250px; display:block; margin:8px 0;">`;
+        }
+
+        if (note.text) {
+            content += `<p style="margin-top:5px;"><strong>Note:</strong> ${note.text}</p>`;
+        }
+
+        noteDiv.innerHTML = content;
+        notesContainer.appendChild(noteDiv);
+    });
+} else {
+    notesContainer.innerHTML = "<p>No notes or pictures provided.</p>";
+}
  
         
     } else {
