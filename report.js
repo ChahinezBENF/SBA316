@@ -24,7 +24,7 @@ const observationsMap = {
         "ANCHOR RODS & OTHER EMBEDMENTS SUPPORITNG STRUCTURAL STEEL",
         "STRUCTURAL STEEL SHOP DRAWINGS"
     ],
-    "FENESTATION AREAS [IIA-5] , FNESTRATION AIR LEAKAGE [IIA-4] ,FNESTRATION THERMAL VALUES AND PRODUCT RATINGS [IIA-3] ": [
+    "FENESTATION AREAS [IIA-5] , FNESTRATION AIR LEAKAGE [IIA-4] ,FNESTRATION THERMAL VALUES AND PRODUCT RATINGS [IIA-3]": [
         "DID DIMENSIONS OF DOORS IN COMPLIANCE WITH CONSTRUCTION DOCUMENTS?",
         "DID DIMENSIONS OF WINDOS AND IN COMPLIANCE WITH CONSTRUCTION DOCUMENTS? ",
         "DID DOORS AND WINDOWS ASSEMBLIES INSTALLED FOR SLIDING OR SWINGING DOORS ARE LISTED AND LABELED TO THE REFERENCED STANDARD.",
@@ -36,7 +36,7 @@ const observationsMap = {
         "DO ALL R-VALUES CONFORM TO THE APPROVED CONSTRUCTION DOCUMENTS FOR ALL ENVELOPE CONDITIONS INCLUDING BUT NOT LIMITED TO: WALLS / FOUNDATIONS ",
         "IS ALL INSULATION INSTALLED ACCORDING TO MANUFACTURER’S INSTRUCTIONS?"
     ],
-    "SMASONRY [BC 1704.5].": [
+    "MASONRY [BC 1704.5].": [
         "** Approved plans **",
         "Materials Compliance with submittals, storage & protection from weather",
         "Thickness of walls & size of bond beams",
@@ -55,7 +55,6 @@ const observationsMap = {
         "Grout samples taken",
         "Batch of grout used within correct time limits",
         "Placement method, high lift or low lift",
-        "",
         "all head, bed and wall joints are Watertight, Correct size, Properly filled & buttered with mortar",
         "Vertical alignment and continuity of cells",
         "Cleanout openings for pours over 5' - 4'' ",
@@ -64,27 +63,7 @@ const observationsMap = {
         "Prism specimens made for testing",
         "Contractor made the necessary arrangements for severe weather conditions",
         "Walls protected from rain and inclement weather on a daily basis"
-    ],
-    "MASONRY [BC 1704.5].": [
-        "COLD FORMED OBSERVATION 1",
-        "COLD FORMED OBSERVATION 2"
-    ],
-    "MASONRY [BC 1704.5].": [
-        "COLD FORMED OBSERVATION 1",
-        "COLD FORMED OBSERVATION 2"
-    ],
-    "MASONRY [BC 1704.5].": [
-        "COLD FORMED OBSERVATION 1",
-        "COLD FORMED OBSERVATION 2"
-    ],
-    "MASONRY [BC 1704.5].": [
-        "COLD FORMED OBSERVATION 1",
-        "COLD FORMED OBSERVATION 2"
-    ],
-    "MASONRY [BC 1704.5].": [
-        "COLD FORMED OBSERVATION 1",
-        "COLD FORMED OBSERVATION 2"
-    ],
+    ]
 };
 
 // Update table dynamically on dropdown change
