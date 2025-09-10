@@ -7,80 +7,122 @@ const tableBody = document.querySelector('#Row4 tbody');
 
 // Map Inspection Subject to corresponding observations
 const observationsMap = {
-  "Structural Steel – Welding BC 1704.3.1": [
-    "MATERIAL IDENTIFICATION: VERIFY TYPE & GRADE",
-    "PROPER FASTENERS FOR JOINTS, COMPONENT & ASSEMBLIES",
-    "PROPER FASTENING PROCEDURES",
-    "ADEQUATE PLANS AVAILABLE",
-    "CONNECTING ELEMENTS",
-    "PRE-INSTALLATION VERIFICATION TESTING",
-    "PROPER STORAGE",
-    "SNUG-TIGHT PRIOR TO FASTENING",
-    "STEEL RUNNERS (TRACKS), BLOCKING, LINTELS, CLIP ANGLES, SHOES, REINFORCEMENTS, FASTENERS, AND ACCESSORIES",
-    "CONTINUOUS TRACKS SIZED TO MATCH STUDS",
-    "ANCHOR ENDS OR STIFFENERS TO SUPPORTING STRUCTURE",
-    "STUDS SECURED TO TOP AND BOTTOM RUNNER TRACKS BY EITHER WELDING OR SCREW FASTENERS AT BOTH INSIDE AND OUTSIDE FLANGES",
-    "A STUD SHALL BE LOCATED UNDERNEATH EACH TRUSS BEARING POINT",
-    "STRUCTURAL STEEL SHOP DRAWINGS",
-    "STUDS ARE BRACED WITH TWO ROWS OF BRIDGING, SPACED BETWEEN FLOORS (4'-0\" MAX. SPACING)",
-    "JOIST BRIDGING INSTALLED / 12 GAGE SOLID BRIDGING."
-  ],
-  "Structural Steel – Details BC 1704.3.2": [
-    "DETAILS OBSERVATION 1",
-    "DETAILS OBSERVATION 2",
-    "DETAILS OBSERVATION 3"
-  ],
-  "Structural Steel – High Strength Bolting BC 1704.3.3": [
-    "BOLTING OBSERVATION 1",
-    "BOLTING OBSERVATION 2"
-  ],
-  "Structural Cold - Formed Steel BC 1704.3.4": [
-    "COLD FORMED OBSERVATION 1",
-    "COLD FORMED OBSERVATION 2"
-  ],
-   "Structural Cold-Formed Steel BC 1704.3.6": [
-    "COLD FORMED OBSERVATION 4",
-    "COLD FORMED OBSERVATION 7"
-  ]
-
+    "STRUCTURAL COLD-FORMED STEEL [BC 1704.3.4]": [
+        "MATERIAL IDENTIFICATION: VERIFY TYPE & GRADE (AISI200)",
+        "MATERIAL IS CLEAN, STRAIGHT AND UNDAMAGED.",
+        "MEMBER SIZES CONFORM TO THE APPROVED CONSTRUCTION DOCUMENTS.",
+        "MEMBER LAYOUT CONFORMS TO THE APPROVED CONSTRUCTION DOCUMENTS.",
+        "PROPER FASTERNERS FOR JOINTS, COMPONENT & ASSEMBLIES",
+        "ADEQUATE PLANS AVAILABLE ",
+        "CONNECTING ELEMENTS",
+        "WEB STIFFENERS, BRIDGING, BLOCKING, ARE INSTALLED IN ACCORDANCE WITH THE APPROVED.",
+        "PROPER STORAGE",
+        "USE QUALIFIED WELDERS",
+        "WELDING TECHNIQUES, SIZE, LENGTH & LOCATION ",
+        "WELDS MEET VISUAL ACCEPTANCE CRITERIA",
+        "STRUCTURAL STEEL DETAILS ",
+        "ANCHOR RODS & OTHER EMBEDMENTS SUPPORITNG STRUCTURAL STEEL",
+        "STRUCTURAL STEEL SHOP DRAWINGS"
+    ],
+    "FENESTATION AREAS [IIA-5] , FNESTRATION AIR LEAKAGE [IIA-4] ,FNESTRATION THERMAL VALUES AND PRODUCT RATINGS [IIA-3] ": [
+        "DID DIMENSIONS OF DOORS IN COMPLIANCE WITH CONSTRUCTION DOCUMENTS?",
+        "DID DIMENSIONS OF WINDOS AND IN COMPLIANCE WITH CONSTRUCTION DOCUMENTS? ",
+        "DID DOORS AND WINDOWS ASSEMBLIES INSTALLED FOR SLIDING OR SWINGING DOORS ARE LISTED AND LABELED TO THE REFERENCED STANDARD.",
+        "DO WINDOW AND DOOR NFRC LABELS INDICATE AIR INFILTRATION RATES IN COMPLIANCE WITH APPLICABLE CODE SECTIONS? INDICATE ALL VALUES FOUND FOR EACH UNIT TYPE. ",
+        "ARE THE U-FACTORS AND SHGC VALUES OF INSTALLED FENESTRATION IN CONFORMANCE WITH THE U-FACTORS AND SHGC VALUES IDENTIFIED IN THE CONSTRUCTION DRAWING."
+    ],
+    "INSULATION PLACEMENT & R VALUES (IA2) , (IIA2)": [
+        "ARE R-VALUES MARKED ON ALL INSTALLED INSULATION PRODUCTS OR PRODUCT CERTIFICATION FOR UNMARKED PRODUCTS PROVIDED?",
+        "DO ALL R-VALUES CONFORM TO THE APPROVED CONSTRUCTION DOCUMENTS FOR ALL ENVELOPE CONDITIONS INCLUDING BUT NOT LIMITED TO: WALLS / FOUNDATIONS ",
+        "IS ALL INSULATION INSTALLED ACCORDING TO MANUFACTURER’S INSTRUCTIONS?"
+    ],
+    "SMASONRY [BC 1704.5].": [
+        "** Approved plans **",
+        "Materials Compliance with submittals, storage & protection from weather",
+        "Thickness of walls & size of bond beams",
+        "Reinforcing steel: grade, size, location, spacing, clearance and placement within allowable tolerance",
+        "Connections :( size and location) joist anchors, number of bolts, dowels, stirrups, ties",
+        "Placement of headers and lintels of material other than masonry",
+        "** Mortar compliance by type and use **",
+        "Manufacturers mortar mixing specifications followed (proportions and time of mixing)",
+        "Mixer operating properly",
+        "Batch of mortar used within correct time limits",
+        "Mortar is not excessively retempered",
+        "Mortar samples taken",
+        "** Grout design mix or proportions **",
+        "Consistency (Slump)",
+        "Proper consolidation",
+        "Grout samples taken",
+        "Batch of grout used within correct time limits",
+        "Placement method, high lift or low lift",
+        "",
+        "all head, bed and wall joints are Watertight, Correct size, Properly filled & buttered with mortar",
+        "Vertical alignment and continuity of cells",
+        "Cleanout openings for pours over 5' - 4'' ",
+        "Position/securing of reinforcement",
+        "Control joint location and reinforcement",
+        "Prism specimens made for testing",
+        "Contractor made the necessary arrangements for severe weather conditions",
+        "Walls protected from rain and inclement weather on a daily basis"
+    ],
+    "MASONRY [BC 1704.5].": [
+        "COLD FORMED OBSERVATION 1",
+        "COLD FORMED OBSERVATION 2"
+    ],
+    "MASONRY [BC 1704.5].": [
+        "COLD FORMED OBSERVATION 1",
+        "COLD FORMED OBSERVATION 2"
+    ],
+    "MASONRY [BC 1704.5].": [
+        "COLD FORMED OBSERVATION 1",
+        "COLD FORMED OBSERVATION 2"
+    ],
+    "MASONRY [BC 1704.5].": [
+        "COLD FORMED OBSERVATION 1",
+        "COLD FORMED OBSERVATION 2"
+    ],
+    "MASONRY [BC 1704.5].": [
+        "COLD FORMED OBSERVATION 1",
+        "COLD FORMED OBSERVATION 2"
+    ],
 };
 
 // Update table dynamically on dropdown change
 planSelect.addEventListener('change', function () {
-  const selectedSubject = planSelect.value;
+    const selectedSubject = planSelect.value;
 
-  // Clear previous rows
-  tableBody.innerHTML = '';
+    // Clear previous rows
+    tableBody.innerHTML = '';
 
-  if (!selectedSubject || !observationsMap[selectedSubject]) return;
+    if (!selectedSubject || !observationsMap[selectedSubject]) return;
 
-  // Create rows dynamically
-  observationsMap[selectedSubject].forEach((obs, index) => {
-    const row = document.createElement('tr');
+    // Create rows dynamically
+    observationsMap[selectedSubject].forEach((obs, index) => {
+        const row = document.createElement('tr');
 
-    // Observation cell
-    const obsCell = document.createElement('td');
-    obsCell.textContent = obs;
-    row.appendChild(obsCell);
+        // Observation cell
+        const obsCell = document.createElement('td');
+        obsCell.textContent = obs;
+        row.appendChild(obsCell);
 
-    // Result cell with select
-    const resultCell = document.createElement('td');
-    const select = document.createElement('select');
-    select.name = `result${index + 1}`;
-    select.classList.add('planResult');
+        // Result cell with select
+        const resultCell = document.createElement('td');
+        const select = document.createElement('select');
+        select.name = `result${index + 1}`;
+        select.classList.add('planResult');
 
-    ["", "N/A", "PASS", "Fail"].forEach(opt => {
-      const option = document.createElement('option');
-      option.value = opt;
-      option.textContent = opt;
-      select.appendChild(option);
+        ["", "N/A", "PASS", "Fail"].forEach(opt => {
+            const option = document.createElement('option');
+            option.value = opt;
+            option.textContent = opt;
+            select.appendChild(option);
+        });
+
+        resultCell.appendChild(select);
+        row.appendChild(resultCell);
+
+        tableBody.appendChild(row);
     });
-
-    resultCell.appendChild(select);
-    row.appendChild(resultCell);
-
-    tableBody.appendChild(row);
-  });
 });
 
 
@@ -117,7 +159,7 @@ function hideError() {
 // Get Lable name for each inpute 
 function getLabelName(fieldName) {
 
-       const label = document.querySelector(`label[for="${fieldName}"]`);
+    const label = document.querySelector(`label[for="${fieldName}"]`);
 
     return label ? label.textContent.trim() : fieldName;
 }
@@ -151,7 +193,7 @@ reportForm.addEventListener("input", function (e) {
     }
 
     // Name Validation for: director , inspector, Contractor, Departement responsible , planer
-    if (field.name === "inspectorName" || field.name === "inspectorLastName" 
+    if (field.name === "inspectorName" || field.name === "inspectorLastName"
         || field.name === "directorName" || field.name === "directorLastName"
         || field.name === "contractorName" || field.name === "Bdepartement" || field.name === "planerName") {
         if (!/^[A-Za-z\s]+$/.test(field.value)) {
@@ -178,7 +220,7 @@ reportForm.addEventListener("input", function (e) {
     //     }
     // }
 
-   
+
 
     //* validate Project Information :
     // Validate Permit Number
@@ -188,18 +230,18 @@ reportForm.addEventListener("input", function (e) {
             return;
         }
     }
-    
+
 
     // * Validate Plan Information :
-        //  Validate Revision number 
+    //  Validate Revision number 
     if (field.name === "revisionNumber") {
         if (isNaN(field.value) || field.value <= 0) {
             showError("Revision Number must be a positive number.");
             return;
         }
     }
- 
-    
+
+
     if (field.name === "planDate") {
         const dateValue = new Date(field.value);
         const today = new Date();
@@ -276,7 +318,7 @@ reportForm.addEventListener('submit', function (event) {
         revisionNumber: document.querySelector('[name="revisionNumber"]').value,
         Bdepartement: document.querySelector('[name="Bdepartement"]').value,
         planDate: document.querySelector('[name="planDate"]').value,
-        plan : document.querySelector('[name="plan"]').value,
+        plan: document.querySelector('[name="plan"]').value,
     };
 
     // Capture Plan Sheet Results
@@ -292,40 +334,40 @@ reportForm.addEventListener('submit', function (event) {
     formData.planSheetResults = planSheetResults;
 
     /////////////////
-// Collect notes & pictures
-const notes = [];
-const noteBlocks = document.querySelectorAll("#notesContainer > div");
+    // Collect notes & pictures
+    const notes = [];
+    const noteBlocks = document.querySelectorAll("#notesContainer > div");
 
-function processNotes(index = 0) {
-    if (index >= noteBlocks.length) {
-        formData.notes = notes;
+    function processNotes(index = 0) {
+        if (index >= noteBlocks.length) {
+            formData.notes = notes;
 
-        // Save and redirect
-        localStorage.setItem('inspectionReport', JSON.stringify(formData));
-        window.location.href = 'presentation.html';
-        return;
-    }
+            // Save and redirect
+            localStorage.setItem('inspectionReport', JSON.stringify(formData));
+            window.location.href = 'presentation.html';
+            return;
+        }
 
-    const block = noteBlocks[index];
-    const title = block.querySelector(`input[name^="noteTitle"]`).value.trim();
-    const text = block.querySelector("textarea").value.trim();
-    const fileInput = block.querySelector("input[type='file']");
-    const file = fileInput.files[0];
+        const block = noteBlocks[index];
+        const title = block.querySelector(`input[name^="noteTitle"]`).value.trim();
+        const text = block.querySelector("textarea").value.trim();
+        const fileInput = block.querySelector("input[type='file']");
+        const file = fileInput.files[0];
 
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            notes.push({ title, text, image: e.target.result }); // Save title + text + Base64 image
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                notes.push({ title, text, image: e.target.result }); // Save title + text + Base64 image
+                processNotes(index + 1);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            notes.push({ title, text, image: "" });
             processNotes(index + 1);
-        };
-        reader.readAsDataURL(file);
-    } else {
-        notes.push({ title, text, image: "" });
-        processNotes(index + 1);
+        }
     }
-}
 
-processNotes();
+    processNotes();
     /////////////
 
     // Store the data in localStorage

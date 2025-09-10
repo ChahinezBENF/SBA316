@@ -25,9 +25,8 @@
 NB : i used sepaate page for DOMContentLoaded evenet to avoid some problems 
 
 # Function and wants to add in the future :
- - Upload/take a picture and add it in the next pages of the report 
  - detect the location automatilcy using GPS and post it in the report
- - add sections bellow (with title and picture with a note under each picture)
+ - for each section titeld bellow i can add a lot of pictures with a note under each picture
  - make it fit for phone and tablette ( CSS @media)
 
 
